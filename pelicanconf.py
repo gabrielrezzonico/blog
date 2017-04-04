@@ -9,6 +9,8 @@ SITEURL = ''
 PATH = 'content'
 OUTPUT_PATH = 'docs/'
 
+THEME = 'themes/pelican-clean-blog'
+
 TIMEZONE = 'America/Santiago'
 
 DEFAULT_LANG = 'en'
