@@ -1177,4 +1177,12 @@ l6SGjLskNWTcJakh4y5JDf0vZB9FlJ1A1boAAAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python firsts"></category></entry></feed>
+</content><category term="python firsts"></category></entry><entry><title>Markdown post test</title><link href="http://blog.gabrielrezzonico.com/mardown-post.html" rel="alternate"></link><published>2017-04-04T20:00:00-03:00</published><updated>2017-04-04T20:00:00-03:00</updated><author><name>Gabriel Rezzonico</name></author><id>tag:blog.gabrielrezzonico.com,2017-04-04:/mardown-post.html</id><summary type="html">&lt;p&gt;This is post is written using markdown.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;This post is written in Markdown&lt;/h1&gt;
+&lt;h2&gt;Ordered lists&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;first item&lt;/li&gt;
+&lt;li&gt;second item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Code blocks&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;this is python code)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="mardown"></category><category term="firsts"></category></entry></feed>
