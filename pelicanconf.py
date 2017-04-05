@@ -6,6 +6,8 @@ AUTHOR = 'Gabriel Rezzonico'
 SITENAME = 'Machine Leaning and Programming'
 SITEURL = ''
 
+GOOGLE_ANALYTICS = 'UA-96815678-1'
+
 PATH = 'content'
 OUTPUT_PATH = 'docs/'
 
