@@ -19,7 +19,7 @@ I'm going to be using conda enviroments to isoled all the dependencies I'm going
 Create an enviroment with the following command, I'm going to call it "jupyter_blog_3.5", I'm going to be using python 3.5:
 
 ```bash
-(jupyter_blog_3.5)$  conda create --name jupyter_blog_3.5 python=3.5
+$  conda create --name jupyter_blog_3.5 python=3.5
 ```
 Activate the enviroment (this command is for linux, in windows is "activate env_name"):
 
