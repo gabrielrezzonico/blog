@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Machine Leaning and Programming - machine leaning</title><link href="http://blog.gabrielrezzonico.com/" rel="alternate"></link><link href="http://blog.gabrielrezzonico.com/feeds/machine-leaning.atom.xml" rel="self"></link><id>http://blog.gabrielrezzonico.com/</id><updated>2017-04-04T20:00:00-03:00</updated><entry><title>Data science portfolio using pelican</title><link href="http://blog.gabrielrezzonico.com/data-science-portfolio-using-pelican.html" rel="alternate"></link><published>2017-04-04T20:00:00-03:00</published><updated>2017-04-04T20:00:00-03:00</updated><author><name>Gabriel Rezzonico</name></author><id>tag:blog.gabrielrezzonico.com,2017-04-04:/data-science-portfolio-using-pelican.html</id><summary type="html">&lt;p&gt;How to set up a data science portfolio using pelican to generate static content.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Data science portfolio using pelican&lt;/h1&gt;
+&lt;p&gt;I'm going to explain how I set up this machine learning/data science/programming blog to be used as a portfolio and to have a place to keep track of all the projects I will be doing. The blog is going to be a static file, it's going to be hosted in github. To generate the content we are going to use a software called pelican.&lt;/p&gt;
+&lt;p&gt;I already have a website hosted in my user github page. So I'm going to be using a project. This can change a few this in regard to were is the content generated and how to setup github!&lt;/p&gt;
+&lt;h2&gt;Set up a conda enviroment&lt;/h2&gt;
+&lt;p&gt;I'm going to be using conda enviroments to isoled all the dependencies I'm going to install to write the blog. It's going to be easy to activate the enviroment when ever I want to write a post and test everything. I'm using anaconda enviroments because I have anaconda already installed for my machine learning projects. If you don't have anaconda installed, &lt;a href="https://docs.continuum.io/anaconda/install"&gt;read this&lt;/a&gt;. If you want to know more about anaconda enviroments, &lt;a href="https://conda.io/docs/using/envs.html"&gt;read this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Create an enviroment with the following command, I'm going to call it "jupyter_blog_3.5", I'm going to be using python 3.5:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  conda create --name jupyter_blog_3.5 &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Activate the enviroment (this command is for linux, in windows is "activate env_name"):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  &lt;span class="nb"&gt;source&lt;/span&gt; activate jupyter_blog_3.5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install pelican, a few dependencies and tools:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  conda install -c conda-forge pelican
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  conda install jupyter ghp-import ipython nbconvert markdown
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Run the initial setup&lt;/h2&gt;
+&lt;p&gt;Create a folder for the blog:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  mkdir jupyter-blog
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Initialize an empty git repository&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git init
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Run pelican wuickstart:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Follow the instructions and the following files and directories are going to be created:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    output
+    content
+    .gitignore
+    develop_server.sh
+    fabfile.py
+    Makefile
+    requirements.txt
+    pelicanconf.py
+    publishconf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Install jupyter notebooks plugin&lt;/h2&gt;
+&lt;p&gt;In order to use jupyter notebooks in our blog we need to install a plugin:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  mkdir plugins
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  &lt;span class="nb"&gt;cd&lt;/span&gt; plugins/
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git submodule add git://github.com/danielfrg/pelican-ipynb.git plugins/ipynb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We need to tell pelican about the plugin, open the file called "pelicanconf.py" located in the root blog directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  nano pelicanconf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And add the following content:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;MARKUP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;md&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ipynb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;PLUGIN_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./plugins&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ipynb.markup&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Since I'm going to be using a project page the content can be generated in the docs/ folder:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir docs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And add the following content to pelicanconf.py:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;OUTPUT_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;docs/&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;The first two post&lt;/h2&gt;
+&lt;p&gt;We are going to write two post, one using simple markdown and the other using a jupyter notebook. Copy this files to the content folder in your blog:&lt;/p&gt;
+&lt;p&gt;https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/first-post.ipynb&lt;/p&gt;
+&lt;p&gt;https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/first-post.ipynb-meta&lt;/p&gt;
+&lt;p&gt;https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/test-md-post.md&lt;/p&gt;
+&lt;p&gt;Change the titles and author if you want.&lt;/p&gt;
+&lt;h2&gt;Testing the blog&lt;/h2&gt;
+&lt;p&gt;To test the blog we first have to generate the static content:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  mkdir docs
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  pelican content
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is going to generate the content in the "docs" folder (this is because I already have a github page and I using a project page to host this blog. &lt;a href="https://pages.github.com/"&gt;more info&lt;/a&gt;). &lt;/p&gt;
+&lt;p&gt;We are going to use python simple server to test that its working:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt; jupyter-blog $ &lt;span class="nb"&gt;cd&lt;/span&gt; docs
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt; jupyter-blog/docs$  python -m pelican.server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Open the browser and go to "localhost:8000"&lt;/p&gt;
+&lt;h2&gt;Create a github page&lt;/h2&gt;
+&lt;p&gt;I'm going to be using a github project page (like username.github.io/project). You can also use a github user page (like username.github.io).&lt;/p&gt;
+&lt;p&gt;First create a repository, I'm going to be calling mine "blog" (if you want to use your github use page you have to name the repository with your usename)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="images/create_repo.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;In the github page configuration make sure that the source is set to "master branch/docs folder".&lt;/p&gt;
+&lt;h2&gt;Publishing the blog (pushing to github)&lt;/h2&gt;
+&lt;p&gt;Add your github repo url as a remote in your project:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git remote add origin git@github.com:gabrielrezzonico/blog.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Generate the content for publishing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  pelican content -s publishconf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When ever you want to publish the content you are going to have to run this command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git add .
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Add a custom domain&lt;/h2&gt;
+&lt;p&gt;I'm going to be using a custom github page domain, blog.gabrielrezzonico.com (I already have another website at gabrielrezzonico.com)), so I need to change the custom domain in the github repository configuration page:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="images/repo_options.png?raw=true"&gt;&lt;/p&gt;
+&lt;p&gt;Change the publishing configuration in the "publishconf.py in the root folder of your blog:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SITEURL = &amp;#39;http://blog.gabrielrezzonico.com&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We have to pull the changes from github.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$ git pull
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git add .
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now you can open your browser and go to you url to check the live blog: ( in this case http://blog.gabrielrezzonico.com)&lt;/p&gt;
+&lt;h2&gt;Install a pelican theme&lt;/h2&gt;
+&lt;p&gt;I'm going to be using &lt;a href="https://github.com/gilsondev/pelican-clean-blog"&gt;this theme&lt;/a&gt;, you can check all the available themes at: &lt;a href="http://www.pelicanthemes.com/"&gt;http://www.pelicanthemes.com/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Create a folder for the themes. We are going to be installing the theme as a git submodule.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  mkdir themes
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the submodule:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git submodule add https://github.com/gilsondev/pelican-clean-blog.git themes/pelican-clean-blog
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now add the following lines to pelicanconf.py config to tell pelican to use the new theme:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;themes/pelican-clean-blog&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now to test your blog run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  pelican content
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt; jupyter-blog/docs$  python -m pelican.server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And to publish your changes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$ pelican content -s publishconf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git add .
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git commit -m &lt;span class="s2"&gt;&amp;quot;plugin&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;jupyter_blog_3.5&lt;span class="o"&gt;)&lt;/span&gt;$  git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;</content><category term="data science"></category><category term="machine learning"></category><category term="portfolio"></category><category term="pelican"></category></entry></feed>

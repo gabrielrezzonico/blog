@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Data science portfolio using pelican</title>
+
+            <link href="http://blog.gabrielrezzonico.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Machine Leaning and Programming Full Atom Feed" />
+            <link href="http://blog.gabrielrezzonico.com/feeds/machine-leaning.atom.xml" type="application/atom+xml" rel="alternate" title="Machine Leaning and Programming Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="http://blog.gabrielrezzonico.com/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="http://blog.gabrielrezzonico.com/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="http://blog.gabrielrezzonico.com/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+        <meta name="description" content="How to set up a data science portfolio using pelican to generate static content.">
+
+        <meta name="author" content="Gabriel Rezzonico">
+
+        <meta name="tags" content="data science">
+        <meta name="tags" content="machine learning">
+        <meta name="tags" content="portfolio">
+        <meta name="tags" content="pelican">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Machine Leaning and Programming">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="http://blog.gabrielrezzonico.com/author/gabriel-rezzonico.html">
+	<meta property="og:url" content="http://blog.gabrielrezzonico.com/data-science-portfolio-using-pelican.html">
+	<meta property="og:title" content="Data science portfolio using pelican">
+	<meta property="article:published_time" content="2017-04-04 20:00:00-03:00">
+            <meta property="og:description" content="How to set up a data science portfolio using pelican to generate static content.">
+
+            <meta property="og:image" content="http://blog.gabrielrezzonico.com/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.gabrielrezzonico.com/">Machine Leaning and Programming</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('http://blog.gabrielrezzonico.com/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Data science portfolio using pelican</h1>
+                        <span class="meta">Posted by
+                                <a href="http://blog.gabrielrezzonico.com/author/gabriel-rezzonico.html">Gabriel Rezzonico</a>
+                             on Tue 04 April 2017
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <h1>Data science portfolio using pelican</h1>
+<p>I'm going to explain how I set up this machine learning/data science/programming blog to be used as a portfolio and to have a place to keep track of all the projects I will be doing. The blog is going to be a static file, it's going to be hosted in github. To generate the content we are going to use a software called pelican.</p>
+<p>I already have a website hosted in my user github page. So I'm going to be using a project. This can change a few this in regard to were is the content generated and how to setup github!</p>
+<h2>Set up a conda enviroment</h2>
+<p>I'm going to be using conda enviroments to isoled all the dependencies I'm going to install to write the blog. It's going to be easy to activate the enviroment when ever I want to write a post and test everything. I'm using anaconda enviroments because I have anaconda already installed for my machine learning projects. If you don't have anaconda installed, <a href="https://docs.continuum.io/anaconda/install">read this</a>. If you want to know more about anaconda enviroments, <a href="https://conda.io/docs/using/envs.html">read this</a>.</p>
+<p>Create an enviroment with the following command, I'm going to call it "jupyter_blog_3.5", I'm going to be using python 3.5:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  conda create --name jupyter_blog_3.5 <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.5
+</pre></div>
+
+
+<p>Activate the enviroment (this command is for linux, in windows is "activate env_name"):</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  <span class="nb">source</span> activate jupyter_blog_3.5
+</pre></div>
+
+
+<p>Install pelican, a few dependencies and tools:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  conda install -c conda-forge pelican
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  conda install jupyter ghp-import ipython nbconvert markdown
+</pre></div>
+
+
+<h2>Run the initial setup</h2>
+<p>Create a folder for the blog:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  mkdir jupyter-blog
+</pre></div>
+
+
+<p>Initialize an empty git repository</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git init
+</pre></div>
+
+
+<p>Run pelican wuickstart:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  pelican-quickstart
+</pre></div>
+
+
+<p>Follow the instructions and the following files and directories are going to be created:</p>
+<div class="highlight"><pre><span></span>    output
+    content
+    .gitignore
+    develop_server.sh
+    fabfile.py
+    Makefile
+    requirements.txt
+    pelicanconf.py
+    publishconf.py
+</pre></div>
+
+
+<h2>Install jupyter notebooks plugin</h2>
+<p>In order to use jupyter notebooks in our blog we need to install a plugin:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  mkdir plugins
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  <span class="nb">cd</span> plugins/
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git submodule add git://github.com/danielfrg/pelican-ipynb.git plugins/ipynb
+</pre></div>
+
+
+<p>We need to tell pelican about the plugin, open the file called "pelicanconf.py" located in the root blog directory:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  nano pelicanconf.py
+</pre></div>
+
+
+<p>And add the following content:</p>
+<div class="highlight"><pre><span></span><span class="n">MARKUP</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;ipynb&#39;</span><span class="p">)</span>
+
+<span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s1">&#39;./plugins&#39;</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ipynb.markup&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Since I'm going to be using a project page the content can be generated in the docs/ folder:</p>
+<div class="highlight"><pre><span></span>mkdir docs
+</pre></div>
+
+
+<p>And add the following content to pelicanconf.py:</p>
+<div class="highlight"><pre><span></span><span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="s1">&#39;docs/&#39;</span>
+</pre></div>
+
+
+<h2>The first two post</h2>
+<p>We are going to write two post, one using simple markdown and the other using a jupyter notebook. Copy this files to the content folder in your blog:</p>
+<p>https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/first-post.ipynb</p>
+<p>https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/first-post.ipynb-meta</p>
+<p>https://raw.githubusercontent.com/gabrielrezzonico/blog/master/content/test-md-post.md</p>
+<p>Change the titles and author if you want.</p>
+<h2>Testing the blog</h2>
+<p>To test the blog we first have to generate the static content:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  mkdir docs
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  pelican content
+</pre></div>
+
+
+<p>This is going to generate the content in the "docs" folder (this is because I already have a github page and I using a project page to host this blog. <a href="https://pages.github.com/">more info</a>). </p>
+<p>We are going to use python simple server to test that its working:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span> jupyter-blog $ <span class="nb">cd</span> docs
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span> jupyter-blog/docs$  python -m pelican.server
+</pre></div>
+
+
+<p>Open the browser and go to "localhost:8000"</p>
+<h2>Create a github page</h2>
+<p>I'm going to be using a github project page (like username.github.io/project). You can also use a github user page (like username.github.io).</p>
+<p>First create a repository, I'm going to be calling mine "blog" (if you want to use your github use page you have to name the repository with your usename)</p>
+<p><img alt="image" src="images/create_repo.png?raw=true"></p>
+<p>In the github page configuration make sure that the source is set to "master branch/docs folder".</p>
+<h2>Publishing the blog (pushing to github)</h2>
+<p>Add your github repo url as a remote in your project:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git remote add origin git@github.com:gabrielrezzonico/blog.git
+</pre></div>
+
+
+<p>Generate the content for publishing:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  pelican content -s publishconf.py
+</pre></div>
+
+
+<p>When ever you want to publish the content you are going to have to run this command.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git add .
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git commit -m <span class="s2">&quot;initial commit&quot;</span>
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git push -u origin master
+</pre></div>
+
+
+<h2>Add a custom domain</h2>
+<p>I'm going to be using a custom github page domain, blog.gabrielrezzonico.com (I already have another website at gabrielrezzonico.com)), so I need to change the custom domain in the github repository configuration page:</p>
+<p><img alt="image" src="images/repo_options.png?raw=true"></p>
+<p>Change the publishing configuration in the "publishconf.py in the root folder of your blog:</p>
+<div class="highlight"><pre><span></span>SITEURL = &#39;http://blog.gabrielrezzonico.com&#39;
+</pre></div>
+
+
+<p>We have to pull the changes from github.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$ git pull
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git add .
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git commit -m <span class="s2">&quot;initial commit&quot;</span>
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git push -u origin master
+</pre></div>
+
+
+<p>Now you can open your browser and go to you url to check the live blog: ( in this case http://blog.gabrielrezzonico.com)</p>
+<h2>Install a pelican theme</h2>
+<p>I'm going to be using <a href="https://github.com/gilsondev/pelican-clean-blog">this theme</a>, you can check all the available themes at: <a href="http://www.pelicanthemes.com/">http://www.pelicanthemes.com/</a>.</p>
+<p>Create a folder for the themes. We are going to be installing the theme as a git submodule.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  mkdir themes
+</pre></div>
+
+
+<p>Add the submodule:</p>
+<div class="highlight"><pre><span></span>git submodule add https://github.com/gilsondev/pelican-clean-blog.git themes/pelican-clean-blog
+</pre></div>
+
+
+<p>Now add the following lines to pelicanconf.py config to tell pelican to use the new theme:</p>
+<div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;themes/pelican-clean-blog&#39;</span>
+</pre></div>
+
+
+<p>Now to test your blog run</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  pelican content
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span> jupyter-blog/docs$  python -m pelican.server
+</pre></div>
+
+
+<p>And to publish your changes:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$ pelican content -s publishconf.py
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git add .
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git commit -m <span class="s2">&quot;plugin&quot;</span>
+<span class="o">(</span>jupyter_blog_3.5<span class="o">)</span>$  git push -u origin master
+</pre></div>
+    </article>
+
+        <div class="tags">
+            <p>tags: <a href="http://blog.gabrielrezzonico.com/tag/data-science.html">data science</a>, <a href="http://blog.gabrielrezzonico.com/tag/machine-learning.html">machine learning</a>, <a href="http://blog.gabrielrezzonico.com/tag/portfolio.html">portfolio</a>, <a href="http://blog.gabrielrezzonico.com/tag/pelican.html">pelican</a></p>
+        </div>
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://www.linkedin.com/in/gabrielrezzonico/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/gabrielrezzonico/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/gabrielrezzonico">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:gabrielrezzonico@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="http://blog.gabrielrezzonico.com/theme/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://blog.gabrielrezzonico.com/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="http://blog.gabrielrezzonico.com/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
