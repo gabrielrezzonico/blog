@@ -42,3 +42,10 @@ MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATH = './plugins'
 PLUGINS = ['ipynb.markup']
+
+## THEME
+
+SOCIAL = (('linkedin', 'https://www.linkedin.com/in/gabrielrezzonico/'),
+          ('github', 'https://github.com/gabrielrezzonico/'),
+          ('facebook','https://www.facebook.com/gabrielrezzonico'),
+          ('envelope','mailto:gabrielrezzonico@gmail.com'))
